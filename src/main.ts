@@ -9,8 +9,7 @@ import { toLine } from '@/utils'
 const app = createApp(App)
 
 for (let key in Icons) {
-  // console.log(`el-icon-${toLine(key)}`)
-  app.component(`el-icon-${toLine(key)}`, (Icons as any)[key])
+  app.component(`el-icon${toLine(key)}`, (Icons as any)[key])
 }
 
 app.use(router)
