@@ -5,6 +5,7 @@ import * as Icons from '@element-plus/icons-vue'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
 import { toLine } from '@/utils'
+import mComponents from './components/index'
 
 const app = createApp(App)
 
@@ -14,4 +15,5 @@ for (let key in Icons) {
 
 app.use(router)
 app.use(ElementPlus)
+app.use(mComponents)
 app.mount('#app')

@@ -3,6 +3,6 @@ import Component from './src/index.vue'
 
 export default {
   install(app: App) {
-    app.component('m-choose-icon', Component)
+    app.component('m-choose-area', Component)
   }
 }
