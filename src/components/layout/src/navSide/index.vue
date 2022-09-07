@@ -1,22 +1,46 @@
 <template>
-  <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="collapse">
-    <el-menu-item index="1">
-      <el-icon-menu />
-      <template #title>首页</template>
-    </el-menu-item>
-    <el-menu-item index="2">
-      <el-icon-menu />
-      <template #title>图标选择器</template>
-    </el-menu-item>
-    <el-menu-item index="3">
-      <el-icon-menu />
-      <template #title>时间选择器</template>
-    </el-menu-item>
-  </el-menu>
+  <m-menu
+    :list="menus"
+    class="el-menu-vertical-demo"
+    :collapse="collapse"
+    :default-active="$route.path"
+    active-text-color="#f40"
+    router
+  ></m-menu>
 </template>
 
 <script setup lang='ts'>
 const props = defineProps<{ collapse: boolean }>()
+const menus = [
+  {
+    path: '/chooseIcon',
+    meta: {
+      title: '图标选择器'
+    },
+    icon: 'Menu'
+  },
+  {
+    path: '/chooseArea',
+    meta: {
+      title: '省市区选择器'
+    },
+    icon: 'Menu'
+  },
+  {
+    path: '/trend',
+    meta: {
+      title: '趋势选择器'
+    },
+    icon: 'Menu'
+  },
+  {
+    path: '/notification',
+    meta: {
+      title: '消息通知'
+    },
+    icon: 'Menu'
+  }
+]
 </script>
 
 <style lang='scss' scoped>
