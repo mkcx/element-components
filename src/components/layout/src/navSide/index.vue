@@ -39,6 +39,20 @@ const menus = [
       title: '消息通知'
     },
     icon: 'Menu'
+  },
+  {
+    path: '/menu',
+    meta: {
+      title: '菜单组件'
+    },
+    icon: 'Menu'
+  },
+  {
+    path: '/progress',
+    meta: {
+      title: '进度条'
+    },
+    icon: 'Menu'
   }
 ]
 </script>

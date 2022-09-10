@@ -1,4 +1,3 @@
-import { toLine } from '@/utils'
 import { defineComponent, PropType, useAttrs } from 'vue'
 import { MenuItem } from './types'
 import * as Icons from '@element-plus/icons-vue'

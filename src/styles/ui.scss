@@ -4,3 +4,11 @@
     overflow: auto;
   }
 }
+
+.el-menu-item,
+.el-sub-menu {
+  svg {
+    width: 1em;
+    height: 1em;
+  }
+}

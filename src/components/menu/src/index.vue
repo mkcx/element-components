@@ -40,8 +40,11 @@ const props = defineProps({
 })
 
 const attrs = useAttrs()
-console.log('attrs', attrs)
 </script>
 
 <style lang='scss' scoped>
+svg {
+  width: 1em;
+  height: 1em;
+}
 </style>
