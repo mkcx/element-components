@@ -8,6 +8,7 @@ import list from './list'
 import menu from './menu'
 import progress from './progress'
 import table from './table'
+import calendar from './calendar'
 
 const components = [
   chooseIcon,
@@ -17,7 +18,8 @@ const components = [
   list,
   menu,
   progress,
-  table
+  table,
+  calendar
 ]
 export default {
   install(app: App) {

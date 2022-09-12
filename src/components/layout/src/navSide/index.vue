@@ -60,6 +60,13 @@ const menus = [
       title: '表格'
     },
     icon: 'Menu'
+  },
+  {
+    path: '/calendar',
+    meta: {
+      title: '日历'
+    },
+    icon: 'Menu'
   }
 ]
 </script>
