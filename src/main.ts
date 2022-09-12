@@ -6,6 +6,7 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 import { toLine } from '@/utils'
 import mComponents from './components/index'
+import '@/mock'
 
 const app = createApp(App)
 

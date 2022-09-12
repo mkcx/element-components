@@ -53,6 +53,13 @@ const menus = [
       title: '进度条'
     },
     icon: 'Menu'
+  },
+  {
+    path: '/table',
+    meta: {
+      title: '表格'
+    },
+    icon: 'Menu'
   }
 ]
 </script>

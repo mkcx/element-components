@@ -7,6 +7,7 @@ import notification from './notification'
 import list from './list'
 import menu from './menu'
 import progress from './progress'
+import table from './table'
 
 const components = [
   chooseIcon,
@@ -15,7 +16,8 @@ const components = [
   notification,
   list,
   menu,
-  progress
+  progress,
+  table
 ]
 export default {
   install(app: App) {
