@@ -2,6 +2,8 @@ const path = require('path')
 const { defineConfig, build } = require('vite')
 const vue = require('@vitejs/plugin-vue')
 const vueJsx = require('@vitejs/plugin-vue-jsx')
+const fsExtra = require('fs-extra')
+const fs = require('fs')
 
 // 打包的入口文件夹
 const entryDir = path.resolve(__dirname, '../packages')
@@ -42,8 +44,54 @@ const buildAll = async () => {
   })
 }
 
+// 单组件打包
+const buildSingle = async (name) => {
+  await build({
+    ...baseConfig,
+    build: {
+      rollupOptions,
+      lib: {
+        entryDir: path.resolve(entryDir, name),
+        name: 'index',
+        formats: ['es', 'umd']
+      },
+      outDir: path.resolve(outDir, name)
+    }
+  })
+}
+
+// 每个组件单独生成package.json
+const createPackageJson = (name) => {
+  const fileStr = `
+    {
+      "name": "${name}",
+      "mane": "index.umd.js",
+      "module": "index.es.js",
+      "style":  "style.css"
+    }
+  `
+  // 输出文件
+  fsExtra.outputFile(
+    path.resolve(outDir, `${name}/package.json`),
+    fileStr,
+    'utf-8'
+  )
+}
+
 const buildLib = async () => {
   await buildAll()
+  // 获取组件名称的数组  单组件
+  const components = fs.readFileSync(entryDir).filter((name) => {
+    const componentDir = path.resolve(entryDir, name)
+    const isDir = fs.lstatSync(components).isDirectory()
+    return isDir && fs.readFileSync(componentDir).includes('index.ts')
+  })
+
+  // 循环构建 单组件
+  for (const name of components) {
+    await buildSingle(name)
+    createPackageJson(name)
+  }
 }
 
 buildLib()
