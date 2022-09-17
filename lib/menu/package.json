@@ -1,0 +1,8 @@
+
+    {
+      "name": "menu",
+      "mane": "index.umd.js",
+      "module": "index.es.js",
+      "style":  "style.css"
+    }
+  

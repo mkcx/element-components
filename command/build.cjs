@@ -51,7 +51,7 @@ const buildSingle = async (name) => {
     build: {
       rollupOptions,
       lib: {
-        entryDir: path.resolve(entryDir, name),
+        entry: path.resolve(entryDir, name),
         name: 'index',
         formats: ['es', 'umd']
       },
@@ -81,10 +81,10 @@ const createPackageJson = (name) => {
 const buildLib = async () => {
   await buildAll()
   // 获取组件名称的数组  单组件
-  const components = fs.readFileSync(entryDir).filter((name) => {
+  const components = fs.readdirSync(entryDir).filter((name) => {
     const componentDir = path.resolve(entryDir, name)
-    const isDir = fs.lstatSync(components).isDirectory()
-    return isDir && fs.readFileSync(componentDir).includes('index.ts')
+    const isDir = fs.lstatSync(componentDir).isDirectory()
+    return isDir && fs.readdirSync(componentDir).includes('index.ts')
   })
 
   // 循环构建 单组件
