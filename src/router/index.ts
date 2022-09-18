@@ -49,7 +49,7 @@ const routes: RouteRecordRaw[] = [
 
 const router = createRouter({
   routes,
-  history: createWebHashHistory()
+  history: createWebHashHistory('/element-components/')
 })
 
 export default router
