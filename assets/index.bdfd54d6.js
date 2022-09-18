@@ -1,0 +1,1 @@
+import{d as t,e as l,c as a,a as i,r as c,o as r}from"./index.088e00d2.js";const _=t({__name:"index",setup(u){const e=l(!1);return(m,o)=>{const n=c("m-choose-icon");return r(),a("div",null,[i(n,{title:"\u56FE\u6807\u9009\u62E9\u5668",visible:e.value,"onUpdate:visible":o[0]||(o[0]=s=>e.value=s)},null,8,["visible"])])}}});export{_ as default};

@@ -1,5 +1,0 @@
-import{d as s,e as d,c as i,a as v,r as p,o as m}from"./index.2c76c2d3.js";const _=s({__name:"index",setup(F){const a=d([{title:"\u5B66\u4E60",start:new Date("2022-9-13 8:00"),end:new Date("2022-9-15 18:30"),editable:!0},{title:"\u4E0A\u73ED",start:new Date("2022-9-14 8:00"),end:new Date("2022-9-25 17:30")}]),u=e=>{console.log(e),a.value.push({title:"\u6D17\u6FA1",start:e.dateStr+" 23:30",end:e.dateStr+" 23:50"})},c=e=>{console.log(e)},l=e=>{const n=document.createElement("div"),t=e.timeText.split("-"),o=t[0].replace("\u4E0A\u5348","").replace("\u4E0B\u5348","").replace("\u65F6",""),r=t[1].replace("\u4E0A\u5348","").replace("\u4E0B\u5348","").replace("\u65F6","");return n.innerHTML=`
-        <div>\u5F00\u59CB\u65F6\u95F4\uFF1A${o},</div>
-        <div>\u7ED3\u675F\u65F6\u95F4\uFF1A${r},</div>
-        <div>\u6807\u9898\uFF1A${e.event._def.title}</div>
-        `,{domNodes:[n]}};return(e,n)=>{const t=p("m-calendar");return m(),i("div",null,[v(t,{events:a.value,eventContent:l,onDateClick:u,onEventClick:c,displayEventEnd:""},null,8,["events"])])}}});export{_ as default};
