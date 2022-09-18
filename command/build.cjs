@@ -35,8 +35,8 @@ const buildAll = async () => {
       rollupOptions,
       lib: {
         entry: path.resolve(entryDir, 'index.ts'),
-        name: 'm-element-components',
-        fileName: 'm-element-components',
+        name: 'index',
+        fileName: 'index',
         formats: ['es', 'umd']
       },
       outDir
@@ -53,6 +53,7 @@ const buildSingle = async (name) => {
       lib: {
         entry: path.resolve(entryDir, name),
         name: 'index',
+        fileName: 'index',
         formats: ['es', 'umd']
       },
       outDir: path.resolve(outDir, name)

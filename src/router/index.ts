@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 import layout from '@/components/layout/src/index.vue'
 
@@ -49,7 +49,7 @@ const routes: RouteRecordRaw[] = [
 
 const router = createRouter({
   routes,
-  history: createWebHistory()
+  history: createWebHashHistory()
 })
 
 export default router

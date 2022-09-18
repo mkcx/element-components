@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "build:components": "node ./command/build.cjs",
-    "lib": "npm run build:components && cp package.json"
+    "lib": "npm run build:components"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.9",
