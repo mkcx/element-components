@@ -11,8 +11,7 @@
         class="scroll-item"
         :style="`width: 100%; height: ${itemHeight}px;transform: translateY(${scrollNum}px)`"
       >
-        {{item}}
-        <slot />
+        <slot :scope="item" />
       </div>
     </div>
   </div>
@@ -54,7 +53,7 @@ const initVirtualScroll = () => {
   realList.value = props.list.slice(0, showList)
 }
 const handelScroll = (e: EventTarget) => {
-  if (new Date().getTime() - lastTime > 40) {
+  if (new Date().getTime() - lastTime > 10) {
     // 设置时间间隔，防止滚动事件高频触发消耗内存资源
     el.value = e
     scrollHeight.value = e.target.scrollTop
@@ -76,6 +75,22 @@ onMounted(() => {
 .virtual-scroll {
   position: relative;
   overflow-y: auto;
+  scrollbar-width: 4px;
+  user-select: none;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 100%;
+    background: #d8d8d8;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    &:hover {
+      background: #b4b4b4;
+    }
+  }
 }
 .scroll-wrap {
   width: 100%;
