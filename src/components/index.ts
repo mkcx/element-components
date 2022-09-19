@@ -9,6 +9,7 @@ import menu from './menu'
 import progress from './progress'
 import table from './table'
 import calendar from './calendar'
+import virtualScroll from './virtualScroll'
 
 const components = [
   chooseIcon,
@@ -19,7 +20,8 @@ const components = [
   menu,
   progress,
   table,
-  calendar
+  calendar,
+  virtualScroll
 ]
 export default {
   install(app: App) {

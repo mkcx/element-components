@@ -42,6 +42,17 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/calendar',
         component: () => import('@/views/calendar/index.vue')
+      },
+      {
+        path: '/scroll',
+        name: 'scroll',
+        redirect: '/scroll/virtualScroll',
+        children: [
+          {
+            path: 'virtualScroll',
+            component: () => import('@/views/scroll/virtualScroll/index.vue')
+          }
+        ]
       }
     ]
   }
