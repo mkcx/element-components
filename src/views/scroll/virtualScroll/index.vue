@@ -13,9 +13,15 @@
 <script setup lang='ts'>
 import { ref } from 'vue'
 const list = ref<number[]>([])
-for (let i = 0; i < 1000; i++) {
+const arr: Number[] = []
+for (let i = 0; i < 30; i++) {
   list.value.push(i)
 }
+setTimeout(() => {
+  for (let index = 30; index < 100; index++) {
+    list.value.push(index)
+  }
+}, 10000)
 </script>
 
 <style lang='scss' scoped>

@@ -4,7 +4,7 @@
     :style="`height: ${height}px; width: ${width}px`"
     @scroll="handelScroll"
   >
-    <div class="scroll-wrap" :style="`height: ${wrapHeight}px`">
+    <div class="scroll-wrap">
       <div
         v-for="(item, index) in realList"
         :key="index"
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang='ts'>
-import { computed, onMounted, PropType, ref } from 'vue'
+import { computed, onMounted, PropType, ref, watch } from 'vue'
 const props = defineProps({
   itemHeight: {
     type: Number,
@@ -37,28 +37,34 @@ const props = defineProps({
     default: () => []
   }
 })
+// 最后一次滚动事件，防抖用的
 let lastTime: number = 0
 // 记录滚动元素
-const el = ref<EventTarget>()
+let el: Event = null
 // 用于记录滚动高度
 const scrollHeight = ref<number>(0)
 const scrollNum = ref<number>(0)
 const realList = ref<number[]>([])
-const wrapHeight = computed(() => {
-  return props.list.length * props.itemHeight
-})
 let showList: Number = 0
 const initVirtualScroll = () => {
   showList = Math.floor(props.height / props.itemHeight) + 4
   realList.value = props.list.slice(0, showList)
+  // 判断监听元素是否保存到ele字段中
+  if (el) {
+    // 如果元素存在ele中则将scrollTop初始化为0;
+    el.target.scrollTop = 0
+    // 初始化translateY的偏移高度
+    scrollNum.value = 0
+  }
+  lastTime = Date.now()
 }
-const handelScroll = (e: EventTarget) => {
-  if (new Date().getTime() - lastTime > 10) {
+const handelScroll = (e: Event) => {
+  if (Date.now() - lastTime > 20) {
     // 设置时间间隔，防止滚动事件高频触发消耗内存资源
-    el.value = e
+    el = e
     scrollHeight.value = e.target.scrollTop
     getList()
-    lastTime = new Date().getTime()
+    lastTime = Date.now()
   }
 }
 const getList = () => {
@@ -66,9 +72,18 @@ const getList = () => {
   const len = scrollNum.value / props.itemHeight // 计算已经有多少个li滚动到页面上方（视图上方用户不可见的数量）
   realList.value = props.list.slice(len, len + showList) // 每次滚动事件后重新计算展示内
 }
-onMounted(() => {
-  initVirtualScroll()
-})
+
+watch(
+  () => props.list,
+  () => {
+    console.log(123)
+    initVirtualScroll()
+  },
+  {
+    immediate: true,
+    deep: true
+  }
+)
 </script>
 
 <style lang='scss' scoped>
@@ -78,14 +93,14 @@ onMounted(() => {
   scrollbar-width: 4px;
   user-select: none;
   &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 12px;
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
     width: 100%;
     background: #d8d8d8;
-    border-radius: 6px;
+    border-radius: 2px;
     transition: all 0.2s ease;
     &:hover {
       background: #b4b4b4;
