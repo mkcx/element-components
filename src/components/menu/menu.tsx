@@ -23,14 +23,14 @@ export default defineComponent({
     // 渲染无限层级菜单方法
     let renderMenu = (data: MenuItem[]) => {
       return data.map((item: MenuItem) => {
-        item.i = (Icons as any)[item.icon!]
+        item.meta.i = (Icons as any)[item.meta.icon!]
         // 处理sub-menu的title插槽
         let slots = {
           // 每个插槽其实是一个函数
           title: () => {
             return (
               <>
-                {item.i ? <item.i /> : ''}
+                {item.meta.i ? <item.meta.i /> : ''}
                 <span>{item.meta.title}</span>
               </>
             )
@@ -45,7 +45,7 @@ export default defineComponent({
         }
         return (
           <el-menu-item index={item.path} {...attrs}>
-            {item.i ? <item.i /> : ''}
+            {item.meta.i ? <item.meta.i /> : ''}
             <span>{item.meta.title}</span>
           </el-menu-item>
         )
