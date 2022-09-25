@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios'
-import type { AxiosInstance, AxiosRequestConfig } from 'axios'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosInstance } from 'axios'
 import { RequestConfig, RequestInterceptors } from './types'
 
 class Request {
@@ -12,6 +12,15 @@ class Request {
     this.instance = axios.create(config)
     this.interceptorObj = config.interceptors
 
+    // 默认的请求拦截器
+    this.instance.interceptors.request.use(
+      (res: AxiosRequestConfig) => {
+        return res
+      },
+      (err: any) => err
+    )
+
+    // 用户传入的拦截器
     this.instance.interceptors.request.use(
       this.interceptorObj?.requestInterceptors,
       this.interceptorObj?.requestInterceptorsCatch
@@ -35,15 +44,17 @@ class Request {
     return new Promise((resolve, reject) => {
       if (config.interceptors?.requestInterceptors) {
         config = config.interceptors.requestInterceptors(config)
-      } 
-      this.instance.request<any, T>(config).then(res => {
-        if (config.interceptors?.responseInterceptors) {
-          res = config.interceptors.responseInterceptors<T>(res)
-        }
-        resolve(res)
-      }).catch((err: any) => reject(err))
-    }) 
-    
+      }
+      this.instance
+        .request<any, T>(config)
+        .then((res) => {
+          if (config.interceptors?.responseInterceptors) {
+            res = config.interceptors.responseInterceptors<T>(res)
+          }
+          resolve(res)
+        })
+        .catch((err: any) => reject(err))
+    })
   }
 }
 

@@ -36,6 +36,7 @@ import { ref, onMounted } from 'vue'
 import { TableOptions } from '@/components/table/src/types'
 import { Loading } from 'element-plus/es/components/loading/src/service'
 import axios from 'axios'
+import { getUser } from '@/api/user'
 
 type TableData = {
   date: string
@@ -43,32 +44,6 @@ type TableData = {
   address: string
 }
 const tableData = ref<TableData[]>([])
-
-// const data = [
-//   {
-//     date: '2016-05-03',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-02',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-04',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   },
-//   {
-//     date: '2016-05-01',
-//     name: 'Tom',
-//     address: 'No. 189, Grove St, Los Angeles'
-//   }
-// ]
-// setTimeout(() => {
-//   tableData.value = data
-// }, 0)
 let options: TableOptions[] = [
   {
     label: '日期',
@@ -138,15 +113,13 @@ const handelCurrentChange = (val: number) => {
 }
 
 const getData = () => {
-  axios
-    .post('/api/list', {
-      current: current.value,
-      pageSize: pageSize.value
-    })
-    .then((res: any) => {
-      tableData.value = res.data.data.rows
-      total.value = res.data.data.total
-    })
+  getUser({
+    current: current.value,
+    pageSize: pageSize.value
+  }).then((res: any) => {
+    tableData.value = res.data.rows
+    total.value = res.data.total
+  })
 }
 
 onMounted(() => {

@@ -1,7 +1,8 @@
 import Request from './axios'
+import type { RequestConfig } from './axios/types'
 
 const request = new Request({
-  baseURL: import.meta.env.BASE_URL,
+  // baseURL: import.meta.env.BASE_URL,
   timeout: 1000 * 60 * 5,
   interceptors: {
     requestInterceptors: (config) => {
@@ -12,8 +13,6 @@ const request = new Request({
     }
   }
 })
-
-import type { RequestConfig } from './axios/types'
 
 interface HttpRequestConfig<T> extends RequestConfig {
   data?: T
