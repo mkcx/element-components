@@ -1,10 +1,11 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 import layout from '@/components/layout/src/index.vue'
+import directives from './modules/directives'
 
 const routes: RouteRecordRaw[] = [
   {
-    path: '/element',
+    path: '/',
     redirect: '/element/home',
     component: layout,
     meta: {
@@ -103,17 +104,10 @@ const routes: RouteRecordRaw[] = [
           icon: 'Menu'
         },
         component: () => import('@/views/scroll/virtualScroll/index.vue')
-      },
-      {
-        path: '/scroll/calendar',
-        meta: {
-          title: '日历组件',
-          icon: 'Menu'
-        },
-        component: () => import('@/views/calendar/index.vue')
       }
     ]
-  }
+  },
+  directives
 ]
 
 const router = createRouter({

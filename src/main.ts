@@ -9,6 +9,7 @@ import mComponents from './components/index'
 // import mComponents from '../lib'
 import '../lib/style.css'
 // import '@/mock'
+import lazy from './directives/lazy'
 
 const app = createApp(App)
 
@@ -16,6 +17,7 @@ for (let key in Icons) {
   app.component(`el-icon${toLine(key)}`, (Icons as any)[key])
 }
 
+app.directive('lazy', lazy)
 app.use(router)
 app.use(ElementPlus)
 app.use(mComponents)
