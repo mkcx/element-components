@@ -2,22 +2,22 @@ import { RouteRecordRaw } from 'vue-router'
 import layout from '@/components/layout/src/index.vue'
 const route: RouteRecordRaw[] = [
   {
-    path: '/directives',
-    name: 'directives',
+    path: '/scroll',
+    name: 'scroll',
     component: layout,
-    redirect: '/directives/lazy',
+    redirect: '/scroll/virtualScroll',
     meta: {
-      title: '指令',
+      title: '滚动组件',
       icon: 'Menu'
     },
     children: [
       {
-        path: '/directives/lazy',
+        path: '/scroll/virtualScroll',
         meta: {
-          title: '懒加载指令',
+          title: '虚拟滚动组件',
           icon: 'Menu'
         },
-        component: () => import('@/views/directives/lazy/index.vue')
+        component: () => import('@/views/scroll/virtualScroll/index.vue')
       }
     ]
   }

@@ -76,7 +76,6 @@ const getList = () => {
 watch(
   () => props.list,
   () => {
-    console.log(123)
     initVirtualScroll()
   },
   {

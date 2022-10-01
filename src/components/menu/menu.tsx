@@ -1,6 +1,7 @@
-import { defineComponent, PropType, useAttrs } from 'vue'
+import { defineComponent, PropType, useAttrs, computed } from 'vue'
 import { MenuItem } from './types'
 import * as Icons from '@element-plus/icons-vue'
+import { filterMenu } from '@/utils/index'
 
 export default defineComponent({
   props: {
@@ -19,6 +20,7 @@ export default defineComponent({
     }
   },
   setup(props, ctx) {
+    const menus = filterMenu(props.list)
     let attrs = useAttrs()
     // 渲染无限层级菜单方法
     let renderMenu = (data: MenuItem[]) => {
@@ -55,7 +57,7 @@ export default defineComponent({
     return () => {
       return (
         <el-menu default-active={props.defaultActive} router={props.router}>
-          {renderMenu(props.list)}
+          {renderMenu(menus)}
         </el-menu>
       )
     }

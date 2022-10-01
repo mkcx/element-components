@@ -15,6 +15,7 @@ specifiers:
   axios: ^0.27.2
   element-plus: ^2.2.15
   fs-extra: ^10.1.0
+  gsap: ^3.11.2
   lodash: ^4.17.21
   mockjs: ^1.1.0
   sass: ^1.54.5
@@ -38,6 +39,7 @@ dependencies:
   '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.185
   axios: registry.npmmirror.com/axios/0.27.2
   element-plus: registry.npmmirror.com/element-plus/2.2.16_vue@3.2.39
+  gsap: registry.npmmirror.com/gsap/3.11.2
   lodash: registry.npmmirror.com/lodash/4.17.21
   sass: registry.npmmirror.com/sass/1.54.9
   vue: registry.npmmirror.com/vue/3.2.39
@@ -1860,6 +1862,12 @@ packages:
     version: 4.2.10
     requiresBuild: true
     dev: true
+
+  registry.npmmirror.com/gsap/3.11.2:
+    resolution: {integrity: sha512-y1NSjM2i2yCjLtoNuoyIhhh9kmYOpFEU9su1EbHuZGN3OWr8M6NIjNHBurSWu/blbHAPQqGm7mUIokSxqTTp2Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/gsap/-/gsap-3.11.2.tgz}
+    name: gsap
+    version: 3.11.2
+    dev: false
 
   registry.npmmirror.com/has-flag/3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/has-flag/-/has-flag-3.0.0.tgz}
