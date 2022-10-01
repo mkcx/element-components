@@ -1,1 +1,0 @@
-import{_ as n,c as r,a as o,o as s,r as c}from"./index.78327d76.js";const t={};function a(i,_){const e=c("m-progress");return s(),r("div",null,[o(e,{isAnimation:""}),o(e,{isAnimation:"",type:"circle"})])}const p=n(t,[["render",a]]);export{p as default};
