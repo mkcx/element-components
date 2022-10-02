@@ -1,1 +1,0 @@
-import{d as s,o as t,g as c,f as r,h as _}from"./index.0f71905f.js";const p=s({__name:"index",setup(u){const a=e=>{let o="";Object.keys(e).forEach(n=>{o+=e[n].name+"-"}),_.warning("\u5F53\u524D\u9009\u62E9\u7684\u662F\uFF1A"+o)};return(e,o)=>{const n=r("m-choose-area");return t(),c(n,{onChange:a})}}});export{p as default};
