@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import router from '@/router/index'
+// import ElementUi from 'element-plus'
 import * as Icons from '@element-plus/icons-vue'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
@@ -18,6 +19,7 @@ for (let key in Icons) {
 
 app.directive('lazy', lazy)
 app.use(router)
+// app.use(ElementUi)
 app.use(mComponents)
 app.mount('#app')
 

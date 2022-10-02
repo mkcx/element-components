@@ -1,9 +1,11 @@
-import { defineComponent, PropType, useAttrs, computed } from 'vue'
+import { defineComponent, PropType, useAttrs } from 'vue'
 import { MenuItem } from './types'
+import { ElMenu, ElMenuItem, ElSubMenu } from 'element-plus'
 import * as Icons from '@element-plus/icons-vue'
 import { filterMenu } from '@/utils/index'
 
 export default defineComponent({
+  components: { ElMenu, ElMenuItem, ElSubMenu },
   props: {
     list: {
       type: Array as PropType<MenuItem[]>,
@@ -20,7 +22,8 @@ export default defineComponent({
     }
   },
   setup(props, ctx) {
-    const menus = filterMenu(props.list)
+    const menus: MenuItem[] = filterMenu(props.list)
+    console.log(menus)
     let attrs = useAttrs()
     // 渲染无限层级菜单方法
     let renderMenu = (data: MenuItem[]) => {
